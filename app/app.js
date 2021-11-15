@@ -21,12 +21,12 @@ const app = angular.module('myApp', ['ngRoute','myApp.version', 'ui.router'])
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'view/home.html',
+    templateUrl: 'view/homepage.html',
     controller: ''
   });
 
   $locationProvider.hashPrefix('!');
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/home'});
 
   // $stateProvider
   //     .state('app.view1', {
