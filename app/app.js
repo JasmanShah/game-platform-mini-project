@@ -20,6 +20,11 @@ const app = angular.module('myApp', ['ngRoute','myApp.version', 'ui.router'])
     controller: 'View2Ctrl'
   });
 
+  $routeProvider.when('/home', {
+    templateUrl: 'view/home.html',
+    controller: ''
+  });
+
   $locationProvider.hashPrefix('!');
   $routeProvider.otherwise({redirectTo: '/view1'});
 
