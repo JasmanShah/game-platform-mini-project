@@ -5,43 +5,43 @@ const app = angular.module('myApp', ['ngRoute','myApp.version', 'ui.router'])
 .run(function ($transitions) {
 
   $transitions.onFinish({}, (transition) => {
-    transition.router.stateService.target('view1');
+    transition.router.stateService.target('home');
   });
 })
 .config(($locationProvider, $routeProvider, $stateProvider, $urlRouterProvider) => {
   
   $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
+    templateUrl: 'webapp/view/view1.html',
     controller: 'View1Ctrl'
   });
 
   $routeProvider.when('/view2', {
-    templateUrl: 'view2/view2.html',
+    templateUrl: 'webapp/view/view2.html',
     controller: 'View2Ctrl'
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'view/homepage.html',
+    templateUrl: 'webapp/view/homepage.html',
     controller: ''
   });
 
   $routeProvider.when('/login', {
-    templateUrl: 'view/login.html',
+    templateUrl: 'webapp/view/login.html',
     controller: ''
   });
 
   $routeProvider.when('/register', {
-    templateUrl: 'view/register.html',
+    templateUrl: 'webapp/view/register.html',
     controller: ''
   });
 
   $routeProvider.when('/author', {
-    templateUrl: 'view/author.html',
+    templateUrl: 'webapp/view/author.html',
     controller: ''
   });
 
   $routeProvider.when('/create', {
-    templateUrl: 'view/create.html',
+    templateUrl: 'webapp/view/create.html',
     controller: ''
   });
 
