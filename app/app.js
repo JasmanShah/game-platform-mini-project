@@ -25,6 +25,26 @@ const app = angular.module('myApp', ['ngRoute','myApp.version', 'ui.router'])
     controller: ''
   });
 
+  $routeProvider.when('/login', {
+    templateUrl: 'view/login.html',
+    controller: ''
+  });
+
+  $routeProvider.when('/register', {
+    templateUrl: 'view/register.html',
+    controller: ''
+  });
+
+  $routeProvider.when('/author', {
+    templateUrl: 'view/author.html',
+    controller: ''
+  });
+
+  $routeProvider.when('/create', {
+    templateUrl: 'view/create.html',
+    controller: ''
+  });
+
   $locationProvider.hashPrefix('!');
   $routeProvider.otherwise({redirectTo: '/home'});
 
