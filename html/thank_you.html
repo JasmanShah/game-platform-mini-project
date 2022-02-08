@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Library | <?php echo $_SESSION['web_title']; ?></title>
+        <!-- Favicon-->
+         <!-- CSS -->
+        <link rel="stylesheet" href="../lib/icons/font/bootstrap-icons.css">
+        <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">    
+    </head>
+    <body style="background-image: none; position: fixed; top: 30%; left: 27%;">
+        <!-- JS  -->
+        <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/html-link.js"></script>
+
+        <!-- Content -->
+        <section class="py-5">
+            <div class="jumbotron text-center">
+                <h1 class="display-3">Thank You <?php echo $_SESSION['session_user']; ?>!</h1>
+                <p class="lead"><strong>Please check your library</strong> your game has been added and can be downloaded.</p>
+                <hr>
+                <!-- <p>
+                  Having trouble? <a href="">Contact us</a>
+                </p> -->
+                <p class="lead">
+                  <a class="btn btn-primary btn-sm" href="store.php" role="button">Continue Shopping</a>
+                </p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-sm" href="library.php" role="button">Go to Library</a>
+                  </p>
+              </div>
+        </section>
+
+
+
+        <!-- Footer-->
+        <!-- <div data-include="/html/footer.html"></div> -->
+    </body>
+</html>

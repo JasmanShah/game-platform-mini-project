@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Game Title | <?php echo $_SESSION['web_title']; ?></title>
+        <!-- Favicon-->
+         <!-- CSS -->
+        <link rel="stylesheet" href="../lib/icons/font/bootstrap-icons.css">
+        <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
+        <div id="game_list_data" hidden><?php print_r($list_js) ?></div>
+        <input type="text" id="current_game_id" value=<?php echo $game_id ?> hidden>
+        <input type="text" id="session_user" value=<?php echo $_SESSION['session_user']; ?> hidden>   
+    </head>
+    <body>
+        <!-- JS  -->
+        <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/html-link.js"></script>
+
+        <!-- Navigation-->
+        <!-- <div data-include="/html/nav.html"></div> -->
+
+        <!-- Content -->
+        <div class="content-min" style="max-width: 1200px; margin: 0 auto;">
+            <div class="row" style="padding: 0px 50px;">
+                <div class="col-sm-8" style="padding: 40px;">
+                    <div class="form_border" style="background-color: white; padding: 20px;">
+                        <h1><?php print_r($gname); ?></h1>
+                        <img style="height: 350px; width:100%" src=<?php print_r($image); ?> alt="" style="background-color: white; width: 100%;">
+                        <span>
+                            <b>Summary</b><br>
+                            <?php print_r($desc_game); ?>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding: 40px;">
+                    <form id="add_game" class="game_form_style form_border" style="padding: 20px;">
+                        <div >
+                            <img style="border: none;" src=<?php print_r($logo); ?> class="rounded mx-auto d-block profile_pic" alt="">
+                        </div>
+                        <div class="form-group row">
+                        <label class="col-sm-3 col-form-label bi bi-person-check" style="z-index: 2; display: flex;"> Publisher:</label>
+                        <div class="col-sm-9" style="padding-left: 30px;">
+                            <div class="form-control" style="border-color: transparent;"> <?php print_r($pname); ?></div>
+                        </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label bi bi-calendar2-check" style="white-space: nowrap; z-index: 2;"> Release Date:</label>
+                            <div class="col-sm-9" style="padding-left: 55px;">
+                                <div class="form-control" style="border-color: transparent;"><?php print_r($release_date); ?></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label bi bi-cash" style="white-space: nowrap; z-index: 2;"> Price:</label>
+                            <div class="col-sm-10" style="padding-left: 20px;"> 
+                                <div class="form-control" style="border-color: transparent;">
+                                    <?php 
+                                        if($price == 'Free') {
+                                            print_r($price); 
+                                        } else {
+                                            echo 'RM';print_r($price); 
+                                        }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" style="padding-top: 20px;">
+                            <form method="POST" action="">
+                            </form>
+
+                            <form action="buy.php" method="POST" style="text-align: center;">
+                                <input name="price" type="hidden" value=<?php print_r($price); ?> >
+                                <!-- <input name="user_id" type="hidden" value=<?php print_r($current_user); ?> > -->
+                                <input name="game_id" type="hidden" value=<?php print_r($_SESSION['selected_game_id']); ?> >
+                                <button type="submit" id="buy_game" name="buy_game" class="btn btn-success bi bi-bag-plus">Buy Now</button>
+                                <br><a id="buy_message" href="login.php"></a>
+                            </form>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer-->
+        <!-- <div data-include="/html/footer.html"></div> -->
+        <script src="../js/game.js"></script>
+    </body>
+</html>

@@ -1,0 +1,213 @@
+html {
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body {
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-image: url('../assets/login_bg.png');
+}
+
+.content-min {
+  min-height: 612px;
+}
+
+/* Header(Nav) */
+.header-style {
+  box-shadow: 0px 2px 20px -1px rgb(0 0 0 / 75%);
+  z-index: 99;
+}
+
+@media only screen and (max-width: 991px) {
+  .header-style .web_logo {
+    display: none;
+  }
+}
+/* Footer */
+.footer-style {
+  position: absolute;
+  /* bottom: 0px; */
+  width: 100%;
+}
+
+/* Login page */
+label {
+  font-weight: bold;
+}
+
+#login_text {
+  color: steelblue; 
+  font-weight: 400;
+}
+
+#login_text:hover {
+  color: dodgerblue;
+  font-weight: 600;
+}
+
+#buy_message {
+  color: steelblue; 
+  font-weight: 400;
+  text-decoration: none;
+}
+
+#buy_message:hover {
+  color: dodgerblue;
+  font-weight: 700;
+}
+
+/* Profile */
+.profile_container {
+  max-width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.form_style {
+  max-width: 600px;
+  margin: 0 auto; 
+  /* margin-top: 150px; */
+}
+
+.form_border {
+  box-shadow: 0px 2px 20px -1px rgb(0 0 0 / 75%);
+  padding: 20px; 
+  border-radius: 10px; 
+  background: rgba(255, 255, 255, 1);
+}
+
+.icon-right {
+  float: right;
+  margin-right: 6px;
+  margin-top: -30px;
+  z-index: 2;
+}
+
+.profile_form {
+  display: none;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.profile_menu_container {
+    position: absolute;
+    top: 17%;
+  }
+
+.profile_menu {
+  height: 70px;  
+  width: 70px;
+  margin-top: 15px;
+  border-radius: 50px;
+  padding-left: 5px;
+  padding-top: 4px;
+}
+
+.profile_menu a {
+  font-size: 40px;
+  padding: 10px;
+  color: rgb(56, 60, 63);
+}
+
+.profile_menu:hover {
+  transform: scale(1.2);
+  transition: transform .2s;
+}
+
+.profile_menu a:hover {
+  color: white;
+}
+
+.profile_pic {
+  border: 1px solid gray;
+  width: 150px;
+  height: 150px;
+  padding: 10px; 
+}
+
+/* Library */
+.library_box {
+  background-color: white; 
+  padding: 30px; max-width: 
+  1300px; 
+  margin: 0 auto;
+}
+
+.library_container {
+  max-width: 1300px; 
+  margin: 0 auto;
+}
+
+.library_container .card-container .card-body {
+  /* background: rgba(255, 255, 255, 0.5); */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: 0.4s;
+
+}
+
+.library_container .card-container .card:hover {
+  box-shadow: 0px 2px 20px -1px rgb(0 0 0 / 75%);
+}
+
+.library_container .card-container:hover .card-body {
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+.library_container .card-container:hover .card-body .card-title,
+.library_container .card-container:hover .card-body .card-text {
+  color: black;
+}
+
+.library_container .card-title {
+  text-align: center;
+  font-family: Montserrat;
+  font-weight: 600;
+  color: transparent;
+}
+
+.library_container .card-text {
+  text-align: center;
+  color: transparent;
+}
+
+.library_container .card-img-top {
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Game From */
+.game_form_style {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.game_container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* GAME PAGE */
+#add_game .bi-person-check::before {
+  padding-top: 4px;
+  padding-right: 5px;
+}
+
+.glow {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}

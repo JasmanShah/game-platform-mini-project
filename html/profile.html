@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Profile | <?php echo $_SESSION['web_title']; ?></title>
+        <!-- Favicon-->
+         <!-- CSS -->
+        <link rel="stylesheet" href="../lib/icons/font/bootstrap-icons.css">
+        <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />    
+    </head>
+    <body>
+        <!-- JS  -->
+        <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/html-link.js"></script>
+
+        <!-- Content -->
+        <div class="row profile_container content-min">
+            
+            <div class="col-sm-2 profile_menu_container">
+                <div id="user_profile_btn" class="profile_menu" style="background: rgb(62, 119, 129);" 
+                onclick="showForm('profile','edit_profile','edit_password')">
+                    <a class="bi bi-person"></a>
+                </div>
+                <div id="edit_profile_btn" class="profile_menu" style="background: rgb(94, 129, 62);" 
+                onclick="showForm('edit_profile','profile','edit_password')">
+                    <a class="bi bi-pencil"></a>
+                </div>
+                <div id="edit_password_btn" class="profile_menu" style="background: rgb(129, 62, 62);" 
+                onclick="showForm('edit_password','profile','edit_profile')">
+                    <a class="bi bi-key"></a>
+                </div>
+            </div>
+            <div class="col-sm-12">
+
+                <!-- Profile Start -->
+                <div id="profile" style="margin-bottom: 50px;">
+                    <form class="form_style form_border profile_form" style="display: block;">
+                        <div >
+                            <img class="rounded-circle mx-auto d-block profile_pic" src=<?php print_r($avatar); ?> >
+                        </div>
+                        <h1 class="text-center"><?php print_r($username); ?></h1>
+                        <div style="text-align: center; padding-bottom: 10px;">
+                            <input id="role" hidden value=<?php print_r($role); ?> >
+                            <span id="user_badge" class="badge">
+                                <div id="user_badge_text">
+                                    <?php print_r($role); ?>
+                                </div>
+                            </span>
+                        </div>
+                        <hr>
+                        <p style="text-align: center; padding: 10px 20px;">
+                            <?php print_r($bio); ?>
+                        </p>
+                    </form>
+    
+                    <?php if($no_data == false) { ?>                    
+                    <div class="container form_style" style="display: block; margin-top: -20px;">
+                        <h5 style="background: white; width: fit-content; margin: 0 auto; padding: 10px;" 
+                            class="form_border">Recently Purchased Games</h5>    
+                        <div class="row" style="margin-top: 20px;">
+                            <?php
+                            if($no_data == false) {
+                                foreach($game_list as $key => $value){ 
+                                ?>
+                            <div class="col" style="padding: 0px;" id="test<?php echo $key ?>">
+                                <div class="form_border" style="padding: 7px; margin: 0 auto; background: white; width: fit-content;">
+                                    <img style="height: 88px; width: 158px; object-fit: cover;" src=<?php print_r($value["image"]); ?> class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <?php } 
+                            }?>
+                        </div>
+                    </div>
+                    <?php } ?>  
+                </div>
+                
+
+                <!-- Profile  End -->
+
+                 <!-- Edit Profile Form Start -->
+                <form id="edit_profile" class="form_style form_border profile_form" action="" method="post">
+                    <h1 class="text-center">Edit Profile</h1>
+                    <div >
+                        <img id="image_preview" src=<?php print_r($avatar); ?> class="rounded-circle mx-auto d-block profile_pic">
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Avatar</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="image" name="image" placeholder="Avatar link" onkeyup="showImageLink()" value=<?php print_r($avatar); ?> >
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="editEmail" name="email" placeholder="Email" value=<?php print_r($email); ?>
+                            onkeyup="fieldCheck('editEmail', 'editName', 'editBio', 'save_profile')">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="editName" name="username" placeholder="Username" value=<?php print_r($username); ?>
+                        onkeyup="fieldCheck('editEmail', 'editName', 'editBio', 'save_profile')">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Biodata</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="editBio" rows="3" name="bio" onkeyup="fieldCheck('editEmail', 'editName', 'editBio', 'save_profile')"><?php print_r($bio); ?></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="" style="text-align: center; padding-top: 10px;">
+                            <button type="submit" id="save_profile" name="save_profile" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Edit Profile Form End -->
+
+                <!-- Change Password Start -->
+                <form id="edit_password" class="form_style form_border profile_form" action="" method="POST">
+                    <h1 class="text-center">Change Password</h1>
+                    <input type="text" class="form-control" id="hiddenOldPass" value=<?php print_r($password); ?> hidden>
+
+                    <div class="form-group row py-2">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Old Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="oldPass" name="oldPass" placeholder="Confirm Password" onkeyup="passCheck('oldPass', 'newPass', 'cPass', 'save_password')">
+                            <i class="bi bi-eye icon-right" id="iconCPassShow" onclick="showPass('oldPass','iconCPassShow','iconCPassHide')"></i>
+                            <i class="bi bi-eye-slash icon-right" id="iconCPassHide" onclick="showPass('oldPass','iconCPassShow','iconCPassHide')" style="display: none;"></i>              
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">New Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="newPass" name="newPass" placeholder="Confirm Password" onkeyup="passCheck('oldPass', 'newPass', 'cPass', 'save_password')">
+                            <i class="bi bi-eye icon-right" id="iconCPassShow1" onclick="showPass('newPass','iconCPassShow1','iconCPassHide1')"></i>
+                            <i class="bi bi-eye-slash icon-right" id="iconCPassHide1" onclick="showPass('newPass','iconCPassShow1','iconCPassHide1')" style="display: none;"></i>              
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Confirm Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="cPass" name="cPass" placeholder="Confirm Password" onkeyup="passCheck('oldPass', 'newPass', 'cPass', 'save_password')">
+                            <i class="bi bi-eye icon-right" id="iconCPassShow2" onclick="showPass('cPass','iconCPassShow2','iconCPassHide2')"></i>
+                            <i class="bi bi-eye-slash icon-right" id="iconCPassHide2" onclick="showPass('cPass','iconCPassShow2','iconCPassHide2')" style="display: none;"></i>              
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                    <div class="" style="text-align: center; padding-top: 10px;">
+                        <button type="submit" class="btn btn-primary" id="save_password" name="save_password" disabled>Save</button>
+                        <div id="error_message" style="color: red;"></div>
+                    </div>
+                    </div>
+                </form>
+            <!-- Change Password End -->
+
+            </div>
+        </div>
+
+
+        <!-- Footer-->
+        <script src="../js/profile.js"></script>
+    </body>
+</html>

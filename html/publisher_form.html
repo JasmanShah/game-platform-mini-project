@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title><?php echo $tab_title; echo ' | ';  echo $_SESSION['web_title']; ?></title>
+        <!-- Favicon-->
+         <!-- CSS -->
+        <link rel="stylesheet" href="../lib/icons/font/bootstrap-icons.css">
+        <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />    
+    </head>
+    <body>
+        <!-- JS  -->
+        <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../js/publisher_form.js"></script>
+
+        <!-- Content -->
+        <div class="row game_container content-min" style="padding: 50px 0px;">
+            <!-- Floating Menu -->
+            <div class="col-sm-2 profile_menu_container">
+                <div id="user_profile_btn" class="profile_menu" style="background: rgb(62, 119, 129);" 
+                onclick="showForm('add_publisher','manage_publisher')">
+                    <a class="bi bi-plus"></a>
+                </div>
+                <div id="edit_profile_btn" class="profile_menu" style="background: rgb(94, 129, 62);" 
+                onclick="showForm('manage_publisher','add_publisher')">
+                    <a class="bi bi-list-check"></a>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <!-- Add Publisher -->
+                <form id="add_publisher" class="game_form_style form_border" action="" method="POST">
+                    <h1 class="text-center">Add Publisher</h1>
+                    <div >
+                        <img id="image_preview" src="../assets/temp.png" class="rounded mx-auto d-block profile_pic" alt="">
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Publisher Logo</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="image" name="image" placeholder="Image link" onkeyup="showImageLink('publish')">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Publisher Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="name" placeholder="Publisher Name">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Biodata</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="bio" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="" style="text-align: center; padding-top: 10px;">
+                            <button type="submit" id="submit_publisher" name="submit_publisher" class="btn btn-primary">Publish</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Manage Publisher -->
+                <form id="manage_publisher" class="game_form_style form_border" style="display: none;" action="" method="POST">
+                    <h1 class="text-center">Manage Publisher</h1>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Select Publisher</label>
+                        <div class="col-sm-10">
+                            <div id="list_data" hidden><?php print_r($list_js) ?></div>
+                            <select class="form-select" id="data_select" onchange="selectData()">
+                                <option selected disabled>Select Publisher</option>
+                                <?php
+                                foreach($list as $key => $value){ 
+                                ?>
+                                <option value=<?php print_r($value["publisher_id"]); ?> ><?php echo $value["publisher_id"] ." : ". $value["pname"]; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div> 
+                    <div >
+                        <img id="edit_image_preview" src="../assets/temp.png" class="rounded mx-auto d-block profile_pic" alt="">
+                    </div>
+                    <input type="text" class="form-control" id="edit_id" name="edit_id" hidden>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Publisher Logo</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="edit_image" name="edit_image" placeholder="Image link" onkeyup="showImageLink('edit')">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Publisher Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="edit_name" id="edit_name" placeholder="Publisher Name">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Biodata</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="edit_bio" id="edit_bio" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="" style="text-align: center; padding-top: 10px;">
+                            <button type="submit" id="submit_edit_publisher" name="submit_edit_publisher" class="btn btn-primary">Update</button>
+                            <button type="submit" id="delete_edit_publisher" name="delete_edit_publisher" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </body>
+</html>

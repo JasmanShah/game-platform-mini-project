@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Add Game | <?php echo $_SESSION['web_title']; ?></title>
+        <!-- Favicon-->
+         <!-- CSS -->
+        <link rel="stylesheet" href="../lib/icons/font/bootstrap-icons.css">
+        <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />    
+    </head>
+    <body>
+        <!-- JS  -->
+        <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/html-link.js"></script>
+        <script src="../js/game_form.js"></script>
+
+        <!-- Navigation-->
+        <!-- <div data-include="/html/nav.html"></div> -->
+
+        <!-- Content -->
+        <div class="row game_container content-min" style="padding: 50px 0px;">
+
+            <div class="col-sm-2 profile_menu_container">
+                <div id="user_profile_btn" class="profile_menu" style="background: rgb(62, 119, 129);" 
+                onclick="showForm('add_game','manage_game')">
+                    <a class="bi bi-plus"></a>
+                </div>
+                <div id="edit_profile_btn" class="profile_menu" style="background: rgb(94, 129, 62);" 
+                onclick="showForm('manage_game','add_game')">
+                    <a class="bi bi-list-check"></a>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <!-- Add Game -->
+                <form id="add_game" class="game_form_style form_border" action="" method="POST">
+                    <h1 class="text-center">Add Game</h1>
+                    <div >
+                        <img id="image_preview" src="../assets/temp.png" class="rounded mx-auto d-block profile_pic" alt="">
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Image Link</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="image" name="image" placeholder="Game Image" onkeyup="showImageLink('publish')">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Game Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="name" placeholder="Game Name">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-10">
+                        <input type="tezt" class="form-control" name="price" placeholder="Price">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="desc" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Date</label>
+                        <div class="col-sm-10">
+                        <input type="date" class="form-control" name="date" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Publisher</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" name="publisher" aria-label="Default select example">
+                                <option selected disabled>Select Publisher</option>
+                                <?php
+                                foreach($publisher_list as $key => $value){ 
+                                ?>
+                                <option value=<?php print_r($value["publisher_id"]); ?> ><?php print_r($value["pname"]); ?></option>
+                                <?php } ?>
+                            </select>                   
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="" style="text-align: center; padding-top: 10px;">
+                            <button type="submit" id="submit_game" name="submit_game" class="btn btn-primary">Publish</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Manage Game -->
+                <form id="manage_game" class="game_form_style form_border" style="display: none;" action="" method="POST">
+                    <h1 class="text-center">Manage Game</h1>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Select Game</label>
+                        <div class="col-sm-10">
+                            <div id="game_list_data" hidden><?php print_r($game_list_js) ?></div>
+                            <select class="form-select" id="game_select" onchange="selectGame()">
+                                <option selected disabled>Select Game</option>
+                                <?php
+                                foreach($game_list as $key => $value){ 
+                                ?>
+                                <option value=<?php print_r($value["game_id"]); ?> ><?php echo $value["game_id"] ." : ". $value["gname"]; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div> 
+                    <div >
+                        <img id="edit_image_preview" src="../assets/temp.png" class="rounded mx-auto d-block profile_pic" alt="">
+                    </div>
+                    <input type="text" class="form-control" id="edit_game_id" name="edit_game_id" hidden>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Image Link</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="edit_image" name="edit_image" placeholder="Game Image" onkeyup="showImageLink('edit')">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Game Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="edit_name" id="edit_name" placeholder="Game Name">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-10">
+                        <input type="tezt" class="form-control" name="edit_price" id="edit_price" placeholder="Price">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="edit_desc" id="edit_desc" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Date</label>
+                        <div class="col-sm-10">
+                        <input type="date" class="form-control" name="edit_date" id="edit_date" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group row py-2">
+                        <label class="col-sm-2 col-form-label">Publisher</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" name="edit_publisher" id="edit_publisher" aria-label="Default select example">
+                                <option selected >Select Publisher</option>
+                                <?php
+                                foreach($publisher_list as $key => $value){ 
+                                ?>
+                                <option value=<?php print_r($value["publisher_id"]); ?> ><?php print_r($value["pname"]); ?></option>
+                                <?php } ?>
+                            </select>                   
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="" style="text-align: center; padding-top: 10px;">
+                            <button type="submit" id="submit_edit_game" name="submit_edit_game" class="btn btn-primary">Update</button>
+                            <button type="submit" id="delete_edit_game" name="delete_edit_game" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </form>
+    
+            </div>
+
+        </div>
+
+        <!-- Footer-->
+        <!-- <div data-include="/html/footer.html"></div> -->
+    </body>
+</html>

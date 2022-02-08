@@ -1,0 +1,70 @@
+<link rel="icon" type="image/x-icon" href="../assets/gamestart_logo.png"/>
+<nav class="navbar navbar-expand-lg navbar-light bg-light header-style">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="/">
+            <img src="../assets/gamestart_logo.png" alt="" style="height:30px">
+        </a>
+        <input type="text" id="user_role" hidden value=<?php print_r($_SESSION['session_role']) ?> >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="/">
+                    <i class="bi bi-basket"></i>
+                    Store</a>
+                </li>
+                <li class="nav-item" id="login_menu">
+                    <a class="nav-link" href="login.php">
+                        <i class="bi bi-key"></i>
+                        Login
+                    </a>
+                </li>
+                <div id="admin_menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="game_form.php">
+                            <i class="bi bi-joystick"></i>
+                            Game Form
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="publisher_form.php">
+                            <i class="bi bi-person-bounding-box"></i>
+                            Publisher Form
+                        </a>
+                    </li>    
+                </div>
+                <li class="nav-item dropdown" id="user_menu">
+                    <a class="nav-link dropdown-toggle bi bi-activity" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php echo $_SESSION['session_user'] ?>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="profile.php">
+                            <i class="bi bi-person"></i>
+                            Profile
+                            </a>
+                        </li> 
+                        <li><a class="dropdown-item" href="library.php">
+                            <i class="bi bi-controller"></i>
+                            Library
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="logout.php">
+                            <i class="bi bi-door-closed"></i>
+                            Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Hello: <?php echo $_SESSION['selected_game_id'] ?></a>
+                </li> -->
+            </ul>
+            <form class="d-flex" style="margin-bottom: 8px; margin-top: 8px;">
+                <a class="navbar-brand web_logo" href="/">
+                    <img src="../assets/gamestart_text.png" alt="" style="height:30px">
+                </a>
+            </form>
+        </div>
+    </div>
+</nav>
+<script src="../js/nav.js"></script>
