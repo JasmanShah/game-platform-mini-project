@@ -140,7 +140,7 @@ INSERT INTO `user` (`user_id`, `avatar`, `username`, `passwd`, `email`, `bio`, `
 (1001, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNhQwHxAEWDT0NT0oeJ9l4z52BPjWmoxDwDg&usqp=CAU', 'Frosty', '12345', 'jasman@mail.com', 'I want to eat egg', 'Admin'),
 (1002, '../assets/temp.png', 'TonyHuz', '12345', 'tony@mail.com', 'Support player', 'User'),
 (1003, 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/52d9142c-09aa-45a6-8101-a06f8603475c/dea0olm-43260024-8a28-41cb-bec0-90ef42b7e368.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzUyZDkxNDJjLTA5YWEtNDVhNi04MTAxLWEwNmY4NjAzNDc1Y1wvZGVhMG9sbS00MzI2MDAyNC04YTI4LTQxY2ItYmVjMC05MGVmNDJiN2UzNjguanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.qaf8UrwzsExc7EJsENpiFsbkPuMAdvdua2IcoyVkcsU', 'AcepReal', '12345', 'aceps@mail.com', 'Sonichu lover no 1', 'User'),
-(1004, '../assets/temp.png', 'jasman', '12345', 'jasmanshah@gmail.com', NULL, 'User'),
+(1004, '../assets/temp.png', 'jasman', '12345', 'jas@mail.com', NULL, 'User'),
 (1008, 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_the_Communist_Party_of_Kampuchea.svg/1280px-Flag_of_the_Communist_Party_of_Kampuchea.svg.png', 'ChinaNo1', '44444', 'ali@alibaba.cn', 'China is a great country. I love out leader John China', 'User'),
 (1009, 'https://i1.sndcdn.com/avatars-000423224016-58aefd-t500x500.jpg', 'MrMeeseks', 'milf69', 'MrpoopyBH@hotmail.com', 'oooooooouuuuuuuuuuu <br>weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', 'User');
 
